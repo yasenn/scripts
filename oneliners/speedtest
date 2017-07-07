@@ -1,1 +1,2 @@
 curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python - | grep --color -C 20  -P '(Testing from[^(]*)|(Download.*)|(Upload.*)'
+curl -s https://github.com/sanderjo/fast.com/blob/master/fast_com.py | python - 
