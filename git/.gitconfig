@@ -1,0 +1,13 @@
+[alias]
+	cof = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
+	lc = log-compact
+  brtcol = "!git for-each-ref refs/heads --color=always --sort -committerdate --format='%(HEAD)%(color:reset);%(color:yellow)%(refname:short)%(color:reset);%(contents:subject);%(color:green)(%(committerdate:relative))%(color:blue);<%(authorname)>' | column -t -s ';'"
+  brt = "!git for-each-ref refs/heads --color=always --sort -committerdate --format='%(HEAD)%(color:reset) %(color:yellow)%(refname:short)%(color:reset) %(contents:subject) %(color:green)(%(committerdate:relative))%(color:blue) <%(authorname)>'"
+  
+  # interactive apply patch
+  ipatch = "!f() { git apply $1; git add -p; }; f"
+
+[includeIf "gitdir:~/gitlab"]
+    path = ~/gitlab/.gitconfig_include
+[log-compact]
+	defaults = --two-initials --abbrev=8
