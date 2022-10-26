@@ -11,3 +11,9 @@ Some useful onliners to work with `fzf`
   ```
   grep --line-buffered --color=never -r "" * | fzf
   ```
+  
+## Find CLI tool written on Rust by it's name or description
+
+```
+curl -s https://lib.rs/command-line-utilities |  w3m  -T text/html -dump  | awk '/•/{if (NR!=1)print "";next}{printf "%s ",$0}END{print "";}' | fzf
+```
