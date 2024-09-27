@@ -1,2 +1,2 @@
 termux-open https://en.wiktionary.org/wiki/$1
-termux-open https://en.wikipedia.org/wiki/$1
+# termux-open https://en.wikipedia.org/wiki/$1
