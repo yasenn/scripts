@@ -1,0 +1,1 @@
+ffmpeg $(yt-dlp -g $(termux-clipboard-get) | sed 's/^/-ss '$1' -i /') -to $2 -c copy $(date +%Y%m%d).mkv
