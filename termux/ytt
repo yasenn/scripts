@@ -1,1 +1,3 @@
-ffmpeg $(yt-dlp -g $(termux-clipboard-get) | sed 's/^/-ss '$1' -i /') -to $2 -c copy $(date +%Y%m%d).mkv
+ffmpeg $(yt-dlp -g $(termux-clipboard-get) | sed 's/^/-ss '$1' -i /') -to $2 -c copy $(date +%Y%m%d).mkv #yt-dlp url from clipboard
+
+yt-dlp -f "$(yt-dlp -F "$(pbpaste)" 2>/dev/null | fzf | awk '{print $1}')" --external-downloader ffmpeg --external-downloader-args "ffmpeg_i:-ss $SS -to $TO" "$(pbpaste)"  #  yt-dlp url from clipboard - specific clip with timecodes
