@@ -1,3 +1,17 @@
-termux-open https://en.wiktionary.org/wiki/$1
-# termux-open https://lsj.gr/wiki/$1
-# termux-open https://en.wikipedia.org/wiki/$1
+STR="$(termux-clipboard-get)"
+STR="${1:-$STR}"
+if echo $STR | grep -Eq '^http' ; then
+  STR=$(echo -n "$STR\n$(echo $STR|sed 's/\?.*//')" | fzf)
+  URL="https://web.archive.org/web/$STR \n \
+https://archive.ph/?url=$STR \
+"
+else 
+  URL="https://en.wiktionary.org/wiki/$STR \n \
+https://lsj.gr/wiki/$STR \n \
+https://en.wikipedia.org/wiki/$STR \n \
+"
+fi
+
+SELECTED=$(echo $URL | fzf )
+termux-open $SELECTED 
+termux-clipboard-set $SELECTED
